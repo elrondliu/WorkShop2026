@@ -128,4 +128,5 @@ data class TaskStats(
     val inProgress: Int = 0
 ) {
     val remaining: Int get() = total - completed
+    val todo: Int get() = (total - completed - inProgress).coerceAtLeast(0)
 }

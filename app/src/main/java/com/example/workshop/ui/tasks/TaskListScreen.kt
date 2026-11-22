@@ -168,7 +168,7 @@ private fun ProgressHeader(stats: TaskStats) {
         )
         Spacer(Modifier.height(12.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            StatPill("To do", stats.total - stats.completed - stats.inProgress)
+            StatPill("To do", stats.todo)
             StatPill("In progress", stats.inProgress)
             StatPill("Done", stats.completed)
         }
@@ -389,9 +389,9 @@ private fun TaskStatus.nextLabel(): String = when (this) {
     TaskStatus.DONE -> "To do"
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-private fun TaskListPreview() {
+fun TaskListPreview() {
     WorkShopTheme(dynamicColor = false) {
         TaskListScreen(viewModel = remember { TaskViewModel() }, onAddTaskClick = {})
     }
